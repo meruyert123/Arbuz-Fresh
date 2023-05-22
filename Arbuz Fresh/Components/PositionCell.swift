@@ -1,9 +1,10 @@
 import SwiftUI
 
 struct PositionCell: View {
+    @StateObject var viewModel: CartViewModel
+    @State var count: Int
     let position: Position
     @Environment(\.presentationMode) var presentationMode
-
     
     var body: some View {
         HStack(spacing: 4) {
@@ -18,48 +19,104 @@ struct PositionCell: View {
             VStack {
                 HStack {
                     VStack(alignment: .leading, spacing: 4) {
-                        Text("\(position.product.name)")
-                            .font(.footnote)
-                            .fontWeight(.medium)
-                            .lineLimit(2)
-                            .multilineTextAlignment(.leading)
-                        if position.product.productType == ProductType.dairy.rawValue {
-                            Text("\(position.count) шт x \(position.product.price)")
-                                .font(.caption)
-                                .foregroundColor(Color.secondary)
+                        HStack {
+                            Text("\(position.product.name)")
+                                .font(.footnote)
+                                .fontWeight(.medium)
+                                .lineLimit(1)
+                                .multilineTextAlignment(.leading)
+                            Spacer()
+                            Button(action: {
+                                // Handle deletion here
+                                CartViewModel.shared.positions.removeAll { $0.id == position.id }
+                            }) {
+                                Image(systemName: "xmark")
+                                    .foregroundColor(.black)
+                                    .font(.title3)
+                                    .padding(.trailing, 12)
+                            }
                         }
-                        else {
-                            Text("\(position.count) кг x \(position.product.price)")
-                                .font(.caption)
-                                .foregroundColor(Color.secondary)
+                        .padding(.top, 12)
+                        HStack {
+                            if position.product.productType == ProductType.dairy.rawValue {
+                                Text("\(position.count)шт x \(position.product.price) тг")
+                                    .font(.caption)
+                                    .foregroundColor(Color.secondary)
+                            } else {
+                                Text("\(position.count)кг x \(position.product.price) тг")
+                                    .font(.caption)
+                                    .foregroundColor(Color.secondary)
+                            }
+                            Spacer()
                         }
+                        HStack {
+                            VStack {
+                                Spacer()
+                                Text("\(position.cost) тг")
+                                    .foregroundColor(Color.secondary)
+                                    .font(.caption)
+                                    .fontWeight(.bold)
+                            }
+                            Spacer()
+                            VStack {
+                                Spacer()
+                                HStack {
+                                    Button(action: {
+                                        if count > 0 {
+                                            count -= 1
+                                            if count == 0 {
+                                                CartViewModel.shared.positions.removeAll { $0.id == position.id }
+                                            }
+                                        }
+                                    }) {
+                                        Image(systemName: "minus")
+                                            .foregroundColor(.red)
+                                            .font(.title3)
+                                            .padding(.leading, 8)
+                                    }
+                                    Text("\(count) x \(position.product.price)")
+                                        .font(.title3)
+                                        .frame(width: 100)
+                                    Button(action: {
+                                        if count < position.product.itemsCount {
+                                            count += 1
+                                        }
+                                    }) {
+                                        Image(systemName: "plus")
+                                            .foregroundColor(.green)
+                                            .font(.title3)
+                                            .padding(.trailing, 8)
+                                    }
+                                }
+                                .padding(4)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 16)
+                                        .stroke(Color.black, lineWidth: 0.5)
+                                )
+                                .padding(.trailing, 8)
+                            }
+                        }
+                        .padding(.bottom, 12)
                     }
-                    Spacer()
-                }
-                Spacer()
-                HStack {
-                    VStack {
-                        Text("\(position.cost)")
-                            .font(.caption)
-                            .padding(6)
-                            .background(Color(Colors.lightGray.rawValue))
-                            .cornerRadius(8)
-                    }
-                    Spacer()
                 }
             }
-            .padding(.vertical, 10)
-            .padding(.trailing, 10)
         }
         .frame(height: 100)
         .background(Color(Colors.lightGray.rawValue))
         .cornerRadius(16)
+        .onAppear {
+            count = position.count
+        }
+        .onChange(of: count) { newCount in
+            let newPosition = Position(product: position.product, count: newCount)
+            CartViewModel.shared.updatePosition(newPosition)
+        }
     }
 }
 
-struct PositionCell_Previews: PreviewProvider {
-    static var previews: some View {
-        PositionCell(position: Position(
-            product: Product(name: "Бананы", imageName: "banana", price: 12, description: "", itemsCount: 1, backgroundColor: "", productType: "", categoryType: ""), count: 20))
-    }
-}
+
+//struct PositionCell_Previews: PreviewProvider {
+//    static var previews: some View {
+////        PositionCell(count: 12, position: Position(product: Product.mockData(), count: 12))
+//    }
+//}

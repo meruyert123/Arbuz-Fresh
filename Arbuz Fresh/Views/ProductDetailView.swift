@@ -65,25 +65,33 @@ struct ProductDetailView: View {
                                     count -= 1
                                 }
                             }) {
-                                Image(systemName: "minus.circle")
+                                Image(systemName: "minus")
                                     .foregroundColor(.red)
-                                    .font(.title)
+                                    .font(.title3)
+                                    .padding(.leading, 8)
                             }
+                            Spacer()
                             Text("\(count) x \(viewModel.product.price)")
                                 .font(.title3)
                                 .frame(width: 100)
+                            Spacer()
                             Button(action: {
                                 if count < viewModel.product.itemsCount {
                                     count += 1
                                 }
                             }) {
-                                Image(systemName: "plus.circle")
+                                Image(systemName: "plus")
                                     .foregroundColor(.green)
-                                    .font(.title)
+                                    .font(.title3)
+                                    .padding(.trailing, 8)
                             }
                             Spacer()
-                            
                         }
+                        .padding(8)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 16)
+                                .stroke(Color.black, lineWidth: 0.5)
+                        )
                     }
                 } else {
                     Button(action: {

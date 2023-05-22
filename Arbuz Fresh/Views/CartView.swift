@@ -19,32 +19,32 @@ struct CartView: View {
                 .frame(width: 250)
             }
             else {
-                VStack {
-                    List(viewModel.positions, id: \.id) { position in
-                        PositionCell(position: position)
-                            .swipeActions {
-                                Button {
-                                    viewModel.positions.removeAll { pos in
-                                        pos.product.name == position.product.name && pos.id == position.id
-                                    }
-                                } label: {
-                                    Text("Удалить")
-                                }.tint(.red)
+                ScrollView {
+                    VStack(spacing: 20) {
+                        VStack(spacing: 8) {
+                            ForEach(viewModel.positions, id: \.id) { position in
+                                PositionCell(viewModel: CartViewModel.shared, count: position.count, position: position)
+                                //                            Divider()
+                                //                                .background(Color(Colors.lightGray.rawValue))
                             }
+                        }
+                        VStack(spacing: 20) {
+                            HStack {
+                                Text("Итого")
+                                Spacer()
+                                Text("\(self.viewModel.cost)")
+                            }
+                            HStack(spacing: 8) {
+                                MainButton(title: "Отменить", color: .mainGreenColor)
+                                MainButton(title: "Заказать", color: .mainGreenColor)
+                            }
+                        }
+                        .padding(.horizontal, 16)
                     }
-                    HStack {
-                        Text("Итого")
-                        Spacer()
-                        Text("\(self.viewModel.cost)")
-                    }
-                    HStack(spacing: 8) {
-                        MainButton(title: "Отменить", color: .mainGreenColor)
-                        MainButton(title: "Заказать", color: .mainGreenColor)
-                    }
+                    .listStyle(.plain)
+                    .navigationBarTitle("Корзина")
+                    .navigationBarTitleDisplayMode(.inline)
                 }
-                .listStyle(.plain)
-                .navigationBarTitle("Корзина")
-                .navigationBarTitleDisplayMode(.inline)
             }
         }
     }
