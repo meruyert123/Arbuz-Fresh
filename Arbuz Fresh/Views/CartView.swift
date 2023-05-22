@@ -36,7 +36,11 @@ struct CartView: View {
                             }
                             HStack(spacing: 8) {
                                 MainButton(title: "Отменить", color: .mainGreenColor)
-                                MainButton(title: "Заказать", color: .mainGreenColor)
+                                NavigationLink {
+                                    OrderView()
+                                } label: {
+                                    MainButton(title: "Заказать", color: .mainGreenColor)
+                                }
                             }
                         }
                         .padding(.horizontal, 16)
