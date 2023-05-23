@@ -12,20 +12,14 @@ struct ProductCell: View {
                     .frame(width: 80, height: 80)
                     .padding(.top, 16)
                     .padding(8)
-                if product.name.contains(" ") {
+                HStack {
                     Text("\(product.name)")
                         .font(.footnote)
                         .fontWeight(.medium)
                         .lineLimit(2)
                         .multilineTextAlignment(.leading)
                 }
-                else {
-                    Text("\(product.name)\n")
-                        .font(.footnote)
-                        .fontWeight(.medium)
-                        .lineLimit(2)
-                        .multilineTextAlignment(.leading)
-                }
+                .frame(height: 40, alignment: .top)
                 if product.productType == ProductType.dairy.rawValue {
                     Text("\(product.price)тг/ 1шт")
                         .font(.caption)
@@ -73,6 +67,6 @@ struct ProductCell: View {
 
 struct ProductCell_Previews: PreviewProvider {
     static var previews: some View {
-        ProductCell(product: Product(name: "Бананы Бананы", imageName: "banana", price: 19087, description: "", itemsCount: 0, backgroundColor: "lightGreen", productType: "Молочные продукты", categoryType: ""))
+        ProductCell(product: Product(name: "Бананы БананыБананыБананы", imageName: "banana", price: 19087, description: "", itemsCount: 0, backgroundColor: "lightGreen", productType: "Молочные продукты", categoryType: ""))
     }
 }
