@@ -27,17 +27,33 @@ struct ProfileCell: View {
                 HStack {
                     Image(Images.onboarding.rawValue)
                         .resizable()
-                        .frame(width: 100, height: 100)
+                        .frame(width: 70, height: 70)
                         .cornerRadius(10)
-                    VStack(alignment: .leading) {
+                    VStack(alignment: .leading, spacing: 4) {
                         Text("\(order.user.name)")
-                        Text("Адрес: \(order.user.address)")
+                            .padding(.top, 4)
                         Spacer()
-                        Text("Количество продуктов: \(order.positions.count)")
+                        HStack(spacing: 4) {
+                            Image(systemName: "mappin")
+                            Text("\(order.user.address)")
+                        }
+                        .font(.caption)
+                        .padding(.bottom, 8)
                     }
-                    .frame(height: 100)
+                    .frame(height: 70)
                     .foregroundColor(.black)
                     Spacer()
+                    VStack {
+                        Text("\(order.positions[0].cost)")
+                            .fontWeight(.medium)
+                            .padding(5)
+                            .cornerRadius(6)
+                            .padding(.bottom, 10)
+                            .foregroundColor(.black)
+                        Spacer()
+                    }
+                    .padding(.top, 2)
+                    .frame(width: 70, height: 70)
                 }
                 .padding(8)
                 .background(Color(Colors.lightGray.rawValue))
@@ -50,7 +66,7 @@ struct ProfileCell: View {
 
 struct ProfileCell_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileCell(order: Orders(positions: [Position(product: Product.mockData(), count: 12)], user: User(name: "Meri", address: "k", phoneNumber: "123456", entrance: "3", floor: "4", apartment: "2")))
+        ProfileCell(order: Orders(positions: [Position(product: Product.mockData(), count: 12)], user: User(name: "Meri", address: "Jmkfcjewfjo", phoneNumber: "123456", entrance: "3", floor: "4", apartment: "2")))
     }
 }
 
