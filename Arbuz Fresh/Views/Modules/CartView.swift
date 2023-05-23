@@ -35,7 +35,11 @@ struct CartView: View {
                                 Text("\(self.viewModel.cost)")
                             }
                             HStack(spacing: 8) {
-                                MainButton(title: "Отменить", color: .mainGreenColor)
+                                Button {
+                                    viewModel.positions = []
+                                } label: {
+                                    MainButton(title: "Отменить", color: .mainGreenColor)
+                                }
                                 NavigationLink {
                                     OrderView(viewModel: CartViewModel.shared)
                                 } label: {
