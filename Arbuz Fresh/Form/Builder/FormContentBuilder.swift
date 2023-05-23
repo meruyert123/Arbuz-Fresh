@@ -107,7 +107,7 @@ final class FormContentBuilderImpl: ObservableObject, FormContentBuilder {
                             
                           ]),
         ButtonFormComponent(id: .submit,
-                       title: "Confirm")
+                       title: "Оформить")
     ]
     func update(_ val: Any, in component: FormComponent) {
        
