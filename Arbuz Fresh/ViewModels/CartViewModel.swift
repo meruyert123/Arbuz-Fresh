@@ -5,6 +5,8 @@ class CartViewModel: ObservableObject {
     private init() {}
     
     @Published var positions = [Position]()
+    @Published var user: User? = nil
+    @Published var ordersList = [Orders]()
     
     var cost: Int {
         var sum = 0
@@ -31,5 +33,21 @@ class CartViewModel: ObservableObject {
        func removePosition(for product: Product) {
            positions.removeAll { $0.product == product }
        }
+    
+    func placeOrder(user: User) {
+            guard !positions.isEmpty else {
+                return // Нельзя размещать пустой заказ
+            }
+            
+            self.user = user
+            
+            let order = Orders(positions: positions, user: user)
+            ordersList.append(order)
+            // Сохраните order или отправьте его на сервер
+        
+            
+            // Очистите корзину после размещения заказа
+            positions = []
+        }
 
 }

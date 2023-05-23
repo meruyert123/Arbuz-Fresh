@@ -17,7 +17,7 @@ struct BottomNavigationBar: View {
                         Text("Корзина")
                     }
                 
-                ProfileView()
+                ProfileView(viewModel: CartViewModel.shared)
                     .tabItem {
                         Image(systemName: "person")
                         Text("Профиль")

@@ -37,7 +37,7 @@ struct CartView: View {
                             HStack(spacing: 8) {
                                 MainButton(title: "Отменить", color: .mainGreenColor)
                                 NavigationLink {
-                                    OrderView()
+                                    OrderView(viewModel: CartViewModel.shared)
                                 } label: {
                                     MainButton(title: "Заказать", color: .mainGreenColor)
                                 }
