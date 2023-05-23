@@ -7,7 +7,9 @@ Arbuz application which provides a subscription service for weekly delivery of f
 - choose the day of the week and the delivery period
 
 - choose a subscription period for delivery of these products
-[Demo Video]([https://drive.google.com/drive/folders/1fM9h1mJYIYXQ8Kw3Ngt1sLLDqb6V9NlT?usp=sharing](https://drive.google.com/drive/folders/1bGlEb1RtC_1FuVTtBVbhTJ0l7tBROfug?usp=share_link).
+
+
+[Demo Video](https://drive.google.com/drive/folders/1bGlEb1RtC_1FuVTtBVbhTJ0l7tBROfug?usp=share_link).
 
 
 ## Getting started
