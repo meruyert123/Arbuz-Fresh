@@ -7,4 +7,12 @@ struct Orders: Identifiable {
     let dayOfWeek: String
     let timeInterval: String
     let subscriptionPeriod: String
+    
+    var cost: Int {
+        var totalCost: Int = 0
+        for i in positions {
+            totalCost = totalCost + i.cost
+        }
+        return totalCost
+    }
 }
