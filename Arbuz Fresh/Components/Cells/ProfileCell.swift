@@ -6,23 +6,7 @@ struct ProfileCell: View {
     var body: some View {
         VStack {
             NavigationLink {
-                ForEach(order.positions, id: \.id) { position in
-                    VStack {
-                        VStack {
-                            Text("Ваш заказ")
-                            Text("\(order.positions.count) продукта")
-                            ProfileProducCell(position: position)
-                        }
-                        VStack {
-                            Text("Детали адреса")
-                            HStack(spacing: 16) {
-                                Image(systemName: "location")
-                                Text("\(order.user.address)")
-                            }
-                        }
-                    }
-                    .padding(.horizontal, 16)
-                }
+                ProfileDetailView(order: order)
             } label: {
                 HStack {
                     Image(Images.onboarding.rawValue)
