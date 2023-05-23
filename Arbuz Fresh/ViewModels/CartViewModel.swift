@@ -7,6 +7,9 @@ class CartViewModel: ObservableObject {
     @Published var positions = [Position]()
     @Published var user: User? = nil
     @Published var ordersList = [Orders]()
+    @Published var dayOfWeek: String = ""
+    @Published var timeInterval: String = ""
+    @Published var subscriptionPeriod: String = ""
     
     var cost: Int {
         var sum = 0
@@ -15,7 +18,7 @@ class CartViewModel: ObservableObject {
         }
         return sum
     }
-
+    
     func updatePosition(_ position: Position) {
         if let index = positions.firstIndex(where: { $0.product == position.product }) {
             positions[index] = position
@@ -30,21 +33,27 @@ class CartViewModel: ObservableObject {
         positions.append(position)
     }
     
-       func removePosition(for product: Product) {
-           positions.removeAll { $0.product == product }
-       }
+    func removePosition(for product: Product) {
+        positions.removeAll { $0.product == product }
+    }
     
-    func placeOrder(user: User) {
-            guard !positions.isEmpty else {
-                return
-            }
-        
-            self.user = user
-            
-            let order = Orders(positions: positions, user: user)
-            ordersList.append(order)
-        
-            positions = []
+    func placeOrder(user: User, dayOfWeek: String, timeInterval: String, subscriptionPeriod: String) {
+        guard !positions.isEmpty else {
+            return
         }
-
+        
+        self.user = user
+        self.dayOfWeek = dayOfWeek
+        self.timeInterval = timeInterval
+        self.subscriptionPeriod = subscriptionPeriod
+        
+        let order = Orders(positions: positions, user: user, dayOfWeek: dayOfWeek, timeInterval: timeInterval, subscriptionPeriod: subscriptionPeriod)
+        ordersList.append(order)
+        
+        positions = []
+        self.dayOfWeek = ""
+        self.timeInterval = ""
+        self.subscriptionPeriod = ""
+    }
+    
 }

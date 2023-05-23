@@ -66,7 +66,7 @@ struct ProfileCell: View {
 
 struct ProfileCell_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileCell(order: Orders(positions: [Position(product: Product.mockData(), count: 12)], user: User(name: "Meri", address: "Jmkfcjewfjo", phoneNumber: "123456", entrance: "3", floor: "4", apartment: "2")))
+        ProfileCell(order: Orders(positions: [Position(product: Product.mockData(), count: 12)], user: User(name: "Meri", address: "Jmkfcjewfjo", phoneNumber: "123456", entrance: "3", floor: "4", apartment: "2"), dayOfWeek: "", timeInterval: "", subscriptionPeriod: ""))
     }
 }
 
