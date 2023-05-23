@@ -4,7 +4,6 @@ class JSONLoader {
     static func loadJSONData(from fileName: String) -> Data? {
         guard let jsonFileURL = Bundle.main.url(forResource: fileName, withExtension: "json") else {
             print("JSON file not found.")
-//            print(error)
             return nil
         }
         
