@@ -9,7 +9,7 @@ struct ProfileView: View {
             if viewModel.ordersList.isEmpty {
                 VStack(alignment: .center, spacing: 8) {
                     Spacer()
-                    Text("Ваша корзина пустая!")
+                    Text("Ваша профиль заказов пуст!")
                         .fontWeight(.medium)
                     Text("Добавьте в нее свои любимые фрукты, овощи и молочные продукты.")
                         .font(.caption)
