@@ -23,6 +23,7 @@ struct OrderView: View {
                         }
                         .pickerStyle(.automatic)
                     }
+                    .padding(.top, 20)
                     VStack(alignment: .leading) {
                         Text("Выбрать период времени")
                             .modifier(optionModifier())
