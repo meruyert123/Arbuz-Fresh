@@ -37,7 +37,7 @@ struct ProductDetailView: View {
                         }
                         Spacer()
                     }
-                    if viewModel.product.itemsCount < 3 {
+                    if viewModel.product.itemsCount < 5 {
                         HStack {
                             PriceButton(title: "\(viewModel.product.price) тг", color: Colors.lightGreen.rawValue)
                             Spacer()

@@ -63,7 +63,7 @@ final class FormContentBuilderImpl: ObservableObject, FormContentBuilder {
                             
                             RegexValidationManagerImpl(
                                 [
-                                    RegexFormItem(pattern: RegexPatterns.alphanumericRegex,
+                                    RegexFormItem(pattern: RegexPatterns.address,
                                                   error: .custom(message: "Введите полный адрес"))
                                 ]
                             )
