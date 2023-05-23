@@ -36,17 +36,14 @@ class CartViewModel: ObservableObject {
     
     func placeOrder(user: User) {
             guard !positions.isEmpty else {
-                return // Нельзя размещать пустой заказ
+                return
             }
-            
+        
             self.user = user
             
             let order = Orders(positions: positions, user: user)
             ordersList.append(order)
-            // Сохраните order или отправьте его на сервер
         
-            
-            // Очистите корзину после размещения заказа
             positions = []
         }
 

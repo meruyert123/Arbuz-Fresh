@@ -10,11 +10,11 @@ protocol FormItem {
 
 enum FormField {
     case name
-    case email
     case phoneNumber
     case entrance
     case floor
     case apartment
+    case address
     case submit
 }
 

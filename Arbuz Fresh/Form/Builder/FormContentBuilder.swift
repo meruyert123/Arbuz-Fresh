@@ -56,14 +56,14 @@ final class FormContentBuilderImpl: ObservableObject, FormContentBuilder {
                                 ]
                             )
                           ]),
-        TextFormComponent(id: .email,
+        TextFormComponent(id: .address,
                           placeholder: "Адрес проживания",
                           keyboardType: .default,
                           validations: [
                             
                             RegexValidationManagerImpl(
                                 [
-                                    RegexFormItem(pattern: RegexPatterns.address,
+                                    RegexFormItem(pattern: RegexPatterns.alphanumericRegex,
                                                   error: .custom(message: "Введите полный адрес"))
                                 ]
                             )
@@ -131,7 +131,7 @@ final class FormContentBuilderImpl: ObservableObject, FormContentBuilder {
            }
            
         if let name = formComponents.first(where: { $0.formId == .name})?.val as? String,
-           let address = formComponents.first(where: { $0.formId == .email})?.val as? String,
+           let address = formComponents.first(where: { $0.formId == .address})?.val as? String,
            let phoneNumber = formComponents.first(where: { $0.formId == .phoneNumber})?.val as? String,
            let entrance = formComponents.first(where: { $0.formId == .entrance})?.val as? String,
            let floor = formComponents.first(where: { $0.formId == .floor})?.val as? String,
