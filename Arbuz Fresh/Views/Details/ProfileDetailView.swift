@@ -4,23 +4,41 @@ struct ProfileDetailView: View {
     var order: Orders
     
     var body: some View {
-        ForEach(order.positions, id: \.id) { position in
-            VStack {
-                VStack {
-                    Text("Ваш заказ")
-                    Text("\(order.positions.count) продукта")
-                    ProfileProducCell(position: position)
-                }
-                VStack {
-                    Text("Детали адреса")
-                    HStack(spacing: 16) {
-                        Image(systemName: "location")
-                        Text("\(order.user.address)")
+        ScrollView {
+            ForEach(order.positions, id: \.id) { position in
+                VStack(alignment: .leading, spacing: 20) {
+                    VStack(alignment: .leading) {
+                        Text("Ваши продукты")
+                            .font(.title3)
+                            .fontWeight(.semibold)
+                        VStack {
+                            ProfileProducCell(position: position)
+                        }
+                    }
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("Детали адреса")
+                            .font(.title3)
+                            .fontWeight(.semibold)
+                        HStack(spacing: 16) {
+                            Image(systemName: "mappin")
+                            Text("\(order.user.address)")
+                        }
                     }
                 }
+                VStack(spacing: 12) {
+                    Text("Спасибо за подписку!")
+                        .font(.title2)
+                        .fontWeight(.bold)
+                    Text("Благодарим вас за доверие \n и возможность обеспечить вас свежими и вкусными молочными продуктами.")
+                        .foregroundColor(.gray)
+                        .font(.subheadline)
+                }
+                .multilineTextAlignment(.center)
+                .padding(.top, 50)
             }
-            .padding(.horizontal, 16)
         }
+        .navigationBarTitle("Ваш заказ")
+        .padding(.horizontal, 16)
     }
 }
 
