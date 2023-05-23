@@ -41,9 +41,10 @@ struct ProductCell: View {
             if product.itemsCount == 0 {
                 VStack(alignment: .center) {
                     Text("Нет в наличии")
-                        .font(.caption)
-                        .foregroundColor(Color(.red).opacity(0.7))
+                        .font(.subheadline)
                         .frame(maxWidth: .infinity)
+                        .foregroundColor(.red.opacity(0.7))
+                        .lineLimit(1)
                 }
                 .padding(2)
                 .background(.white)
@@ -72,6 +73,6 @@ struct ProductCell: View {
 
 struct ProductCell_Previews: PreviewProvider {
     static var previews: some View {
-        ProductCell(product: Product(name: "Бананы Бананы", imageName: "banana", price: 19087, description: "", itemsCount: 1, backgroundColor: "lightGreen", productType: "Молочные продукты", categoryType: ""))
+        ProductCell(product: Product(name: "Бананы Бананы", imageName: "banana", price: 19087, description: "", itemsCount: 0, backgroundColor: "lightGreen", productType: "Молочные продукты", categoryType: ""))
     }
 }
