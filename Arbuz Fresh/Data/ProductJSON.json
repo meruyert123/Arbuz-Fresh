@@ -120,11 +120,21 @@
         "categoryType": "Картофель"
     },
     {
-        "name": "Картофель Гала",
+        "name": "Картофель ГалаАриель",
         "imageName": "galaPotato",
         "price": 990,
         "description": "10",
         "itemsCount": 46,
+        "backgroundColor" : "lightYellow",
+        "productType": "Овощи",
+        "categoryType": "Картофель"
+    },
+    {
+        "name": "Картофель ГалаАриель Импала",
+        "imageName": "galaPotato",
+        "price": 340,
+        "description": "10",
+        "itemsCount": 3,
         "backgroundColor" : "lightYellow",
         "productType": "Овощи",
         "categoryType": "Картофель"
