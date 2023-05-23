@@ -15,6 +15,7 @@ struct ProfileDetailView: View {
                             ProfileProducCell(position: position)
                         }
                     }
+                    .padding(.top, 20)
                     VStack(alignment: .leading, spacing: 8) {
                         Text("Детали адреса")
                             .font(.title3)
