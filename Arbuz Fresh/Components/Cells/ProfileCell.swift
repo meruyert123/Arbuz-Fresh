@@ -28,7 +28,8 @@ struct ProfileCell: View {
                     .foregroundColor(.black)
                     Spacer()
                     VStack {
-                        Text("\(order.cost)")
+                        Text("\(order.cost) тг")
+                            .font(.caption)
                             .fontWeight(.medium)
                             .padding(5)
                             .cornerRadius(6)
