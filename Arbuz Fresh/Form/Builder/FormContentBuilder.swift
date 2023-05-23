@@ -1,15 +1,6 @@
 import Foundation
 import Combine
 
-struct User: Equatable {
-    let name: String
-    let address: String
-    let phoneNumber: String
-    let entrance: String
-    let floor: String
-    let apartment: String
-}
-
 enum FormState {
     case valid(user: User)
     case fail(error: ValidationError)
