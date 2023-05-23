@@ -5,25 +5,25 @@ struct ProfileDetailView: View {
     
     var body: some View {
         ScrollView {
-            ForEach(order.positions, id: \.id) { position in
-                VStack(alignment: .leading, spacing: 20) {
+            VStack(alignment: .leading, spacing: 20) {
+                Text("Ваши продукты")
+                    .font(.title3)
+                    .fontWeight(.semibold)
+                    .padding(.top, 20)
+                ForEach(order.positions, id: \.id) { position in
                     VStack(alignment: .leading) {
-                        Text("Ваши продукты")
-                            .font(.title3)
-                            .fontWeight(.semibold)
                         VStack {
                             ProfileProducCell(position: position)
                         }
                     }
-                    .padding(.top, 20)
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text("Детали адреса")
-                            .font(.title3)
-                            .fontWeight(.semibold)
-                        HStack(spacing: 16) {
-                            Image(systemName: "mappin")
-                            Text("\(order.user.address)")
-                        }
+                }
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("Детали адреса")
+                        .font(.title3)
+                        .fontWeight(.semibold)
+                    HStack(spacing: 16) {
+                        Image(systemName: "mappin")
+                        Text("\(order.user.address)")
                     }
                 }
                 VStack(spacing: 12) {
