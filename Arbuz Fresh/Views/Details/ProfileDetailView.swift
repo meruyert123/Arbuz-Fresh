@@ -11,11 +11,7 @@ struct ProfileDetailView: View {
                     .fontWeight(.semibold)
                     .padding(.top, 20)
                 ForEach(order.positions, id: \.id) { position in
-                    VStack(alignment: .leading) {
-                        VStack {
-                            ProfileProducCell(position: position)
-                        }
-                    }
+                    ProfileProducCell(position: position)
                 }
                 VStack(alignment: .leading, spacing: 8) {
                     Text("Детали адреса")
