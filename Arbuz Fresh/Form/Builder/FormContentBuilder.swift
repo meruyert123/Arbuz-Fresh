@@ -38,7 +38,7 @@ final class FormContentBuilderImpl: ObservableObject, FormContentBuilder {
                             
                             RegexValidationManagerImpl(
                                 [
-                                    RegexFormItem(pattern: RegexPatterns.name,
+                                    RegexFormItem(pattern: RegexPatterns.alphanumericRegex,
                                                   error: .custom(message: "Вводите только буквы"))
                                 ]
                             )
